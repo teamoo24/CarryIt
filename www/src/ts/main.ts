@@ -2,6 +2,11 @@ let data:Array<Array<number>>;
 let px:number = 12,py:number = 8;
 let ctx:CanvasRenderingContext2D;
 
+let imgGoal:HTMLImageElement;
+let imgLuggage:HTMLImageElement;
+let imgWall:HTMLImageElement;
+let imgWorker:HTMLImageElement;
+
 data = [
     [6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6],
     [6,6,6,6,6,0,0,0,6,6,6,6,6,6,6,6,6,6,6,6],
@@ -20,11 +25,21 @@ data = [
  */
 let init = () => {
     let canvas = <HTMLCanvasElement>document.getElementById("soko");
+    imgGoal.src = "";
     ctx = canvas.getContext("2d");
 }
 
 let repaint = () => {
-        
+    ctx.fillStyle = "black";
+    ctx.fillRect(0,0,800,440);
+
+    for(let y = 0; y < data.length; y++) {
+        for(let x = 0; x< data[y].length; x++){
+            if(data[y][x]&0x1) {
+                
+            }
+        }
+    }
 }
 
 let mykeydown = (e:any) => {

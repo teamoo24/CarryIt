@@ -14,6 +14,14 @@ const config = {
         // Add your plugins here
         // Learn more about plugins from https://webpack.js.org/configuration/plugins/
     ],
+    devServer: {
+        open: true,
+        host: 'localhost',
+        //directoryには、サーバーの起点とするディレクトリを入力します。
+        static: {
+            directory: path.join(__dirname, "www")
+        }
+    },
     module: {
         rules: [
             {

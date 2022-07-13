@@ -2,6 +2,10 @@
 let data;
 let px = 12, py = 8;
 let ctx;
+let imgGoal;
+let imgLuggage;
+let imgWall;
+let imgWorker;
 data = [
     [6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6],
     [6, 6, 6, 6, 6, 0, 0, 0, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6],
@@ -19,9 +23,18 @@ data = [
  */
 let init = () => {
     let canvas = document.getElementById("soko");
+    imgGoal.src = "";
     ctx = canvas.getContext("2d");
 };
 let repaint = () => {
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, 800, 440);
+    for (let y = 0; y < data.length; y++) {
+        for (let x = 0; x < data[y].length; x++) {
+            if (data[y][x] & 0x1) {
+            }
+        }
+    }
 };
 let mykeydown = (e) => {
     let dx0 = px, dx1 = px, dy0 = py, dy1 = py;
