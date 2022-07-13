@@ -20,7 +20,7 @@ const config = {
         //directoryには、サーバーの起点とするディレクトリを入力します。
         static: {
             directory: path.join(__dirname, "www")
-        }
+        },
     },
     module: {
         rules: [

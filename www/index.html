@@ -5,13 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
     <script src="components/loader.js"></script>
+    <script src="src/emitted/main.js"></script>
     <link rel="stylesheet" href="components/loader.css">
     <link rel="stylesheet" href="css/style.css">
     <script>
+        window.onload = () => {
+            init();
+        }
     </script>
 </head>
 <body>
-	<br />
-    This is a template for Monaca app.
+    <canvas id="soko" width="800" height="440"></canvas>
+    <img id="imgWall" src="./src/img/imgWall.png" style="display: none;">
+    <img id="imgGoal" src="./src/img/imgGoal.png" style="display: none;">
+    <img id="imgWorker" src="./src/img/imgWorker.png" style="display: none;">
+    <img id="imgLuggage" src="./src/img/imgLuggage.png" style="display: none;">
 </body>
 </html>

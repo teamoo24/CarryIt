@@ -12,9 +12,10 @@ data = [
     [6, 6, 6, 6, 6, 2, 0, 0, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6],
     [6, 6, 6, 6, 6, 0, 0, 2, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6],
     [6, 6, 6, 0, 0, 2, 0, 0, 2, 0, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6],
+    [6, 6, 6, 0, 6, 0, 6, 6, 6, 0, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6],
     [6, 0, 0, 0, 6, 0, 6, 6, 6, 0, 6, 6, 6, 6, 0, 0, 1, 1, 6, 6],
     [6, 0, 2, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 6, 6],
-    [6, 6, 6, 6, 6, 0, 6, 6, 6, 6, 0, 6, 0, 6, 0, 1, 1, 6, 6, 6],
+    [6, 6, 6, 6, 6, 0, 6, 6, 6, 6, 0, 6, 0, 6, 0, 0, 1, 1, 6, 6],
     [6, 6, 6, 6, 6, 0, 0, 0, 0, 0, 0, 6, 6, 6, 6, 6, 6, 6, 6, 6],
     [6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6]
 ];
@@ -23,8 +24,13 @@ data = [
  */
 let init = () => {
     let canvas = document.getElementById("soko");
-    imgGoal.src = "";
     ctx = canvas.getContext("2d");
+    onkeydown = mykeydown;
+    imgGoal = document.getElementById("imgGoal");
+    imgLuggage = document.getElementById("imgLuggage");
+    imgWall = document.getElementById("imgWall");
+    imgWorker = document.getElementById("imgWorker");
+    repaint();
 };
 let repaint = () => {
     ctx.fillStyle = "black";
@@ -32,9 +38,17 @@ let repaint = () => {
     for (let y = 0; y < data.length; y++) {
         for (let x = 0; x < data[y].length; x++) {
             if (data[y][x] & 0x1) {
+                ctx.drawImage(imgGoal, x * 40, y * 40, 40, 40);
+            }
+            if (data[y][x] & 0x2) {
+                ctx.drawImage(imgLuggage, x * 40, y * 40, 40, 40);
+            }
+            if (data[y][x] == 6) {
+                ctx.drawImage(imgWall, x * 40, y * 40, 40, 40);
             }
         }
     }
+    ctx.drawImage(imgWorker, px * 40, py * 40, 40, 40);
 };
 let mykeydown = (e) => {
     let dx0 = px, dx1 = px, dy0 = py, dy1 = py;
@@ -66,10 +80,10 @@ let mykeydown = (e) => {
         if ((data[dy1][dx1] & 0x2) == 0) {
             //荷物なし＆壁なし→進む
             data[dy0][dx0] ^= 2; //隣の荷物をクリア
-            data[dy1][dy1] |= 2; //更に先に荷物をセット
+            data[dy1][dx1] |= 2; //更に先に荷物をセット
             px = dx0;
             py = dy0;
         }
-        repaint();
     }
+    repaint();
 };
