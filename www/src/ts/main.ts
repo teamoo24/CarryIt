@@ -1,12 +1,13 @@
 let data:Array<Array<number>>;
-let px:number = 12,py:number = 8;
+let px:number = 2,py:number = 3;
 let ctx:CanvasRenderingContext2D;
 
 let imgGoal:HTMLImageElement;
 let imgLuggage:HTMLImageElement;
 let imgWall:HTMLImageElement;
 let imgWorker:HTMLImageElement;
-
+//8x14
+/*
 data = [
     [6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6],
     [6,6,6,6,6,0,0,0,6,6,6,6,6,6,6,6,6,6,6,6],
@@ -20,7 +21,14 @@ data = [
     [6,6,6,6,6,0,0,0,0,0,0,6,6,6,6,6,6,6,6,6],
     [6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6]
 ]
-
+*/
+data = [
+    [6,6,6,6,0],
+    [6,1,0,6,6],
+    [6,0,2,0,6],
+    [6,0,0,0,6],
+    [6,6,6,6,6]
+]
 /**
  * 初期化関数
  */
